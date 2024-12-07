@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop List</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+   
+</head>
+
+
+   
+<body>
+    <h1>Laptop List</h1>
+    <a href="{% url 'add_laptop' %}">Add New Laptop</a>
+    <ul>
+        {% for laptop in laptops %}
+            <li>
+                {{ laptop.brand }} {{ laptop.model }} - ${{ laptop.price }}
+                <a href="{% url 'update_laptop' laptop.pk %}">Update</a>
+                <a href="{% url 'delete_laptop' laptop.pk %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <style>/* styles.css */
+
+        /* Set a background color for the entire page */
+        body {
+            background-color: #f4f4f9;  /* Light gray background */
+            font-family: Arial, sans-serif;  /* Apply a clean font */
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Style for the header */
+        h1 {
+            text-align: center;  /* Center the header */
+            color: #333;  /* Dark text for better visibility */
+            margin-top: 20px;  /* Add some space above the header */
+        }
+        
+        /* Style for the "Add New Laptop" link */
+        a {
+            display: block;  /* Make the link block-level */
+            text-align: center;  /* Center the link */
+            margin-top: 20px;  /* Add space above the link */
+            color: #007BFF;  /* Blue color for the link */
+            text-decoration: none;  /* Remove underline */
+            font-size: 18px;  /* Increase font size */
+        }
+        
+        a:hover {
+            text-decoration: underline;  /* Underline the link on hover */
+        }
+        
+        /* Style for the list of laptops */
+        ul {
+            list-style-type: none;  /* Remove the default list bullets */
+            padding: 0;  /* Remove padding */
+            max-width: 800px;  /* Limit the width of the list */
+            margin: 20px auto;  /* Center the list with some margin */
+        }
+        
+        /* Style for each laptop list item */
+        li {
+            background-color: white;  /* White background for each item */
+            padding: 15px;  /* Add padding inside the list item */
+            border-radius: 8px;  /* Round the corners of each item */
+            margin-bottom: 10px;  /* Add space between list items */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Add a subtle border shadow */
+        }
+        
+        /* Style for the "Update" and "Delete" links */
+        li a {
+            margin-left: 10px;  /* Add space between the links */
+            color: #007BFF;  /* Blue color for the links */
+            text-decoration: none;  /* Remove underline */
+        }
+        
+        li a:hover {
+            text-decoration: underline;  /* Underline the links on hover */
+        }
+        
+    </style>
+</body>
+</html>
